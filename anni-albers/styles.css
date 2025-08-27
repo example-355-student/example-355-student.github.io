@@ -20,4 +20,11 @@ h2 {
 p {
     font-size: 1.2rem;
     line-height: 2.5rem;
+    width: 50%;
+}
+
+p.callout {
+    font-size: 2rem;
+    line-height: 2.2rem;
+    font-style: italic;
 }
