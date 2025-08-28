@@ -41,3 +41,28 @@ p.callout {
 #row4 p {
     margin-left: calc(100% * 2 / 6);
 }
+
+
+/* *************************************************** */
+/* CSS for index2                                      */
+/* *************************************************** */
+
+/* inherit the baseline main code, above, and add to it */
+#secondLayout main {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(5, auto);
+    grid-template-areas:
+        'title title title title title title'
+        '. p1 p1 . . .'
+        'p2 p2 . . c1 c1'
+        '. p3 p3 . . .'
+        '. . p4 p4 . .';
+}
+
+#secondLayout #titleRow { grid-area: title; }
+#secondLayout #para1 { grid-area: p1; }
+#secondLayout #para2 { grid-area: p2; }
+#secondLayout #para3 { grid-area: p3; }
+#secondLayout #para4 { grid-area: p4; }
+#secondLayout #callout1 { grid-area: c1; }
