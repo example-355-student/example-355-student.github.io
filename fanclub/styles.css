@@ -32,20 +32,59 @@ header{
   max-width:var(--maxw);
   margin:0 auto;
   padding:0 16px;
+  position:relative;
 }
-.brand{
-  font-weight:700;
-  color:var(--accent);
-  margin-right:16px;
+
+/* Dropdown menu for Characters */
+.nav .dropdown{
+  position:relative;
 }
-.nav a{
+.nav .dropbtn{
   color:var(--muted);
   text-decoration:none;
   padding:8px 12px;
   border-radius:6px;
+  display:inline-block;
+  background:transparent;
+  border:0;
+  cursor:pointer;
 }
-.nav a:hover{ color:#fff; background:var(--glass) }
-.nav a.active{ color:#fff; background:rgba(255,255,255,0.04) }
+.nav .dropbtn:hover{ color:#fff; background:var(--glass) }
+.nav .dropdown-content{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:var(--card);
+  border-radius:8px;
+  padding:8px;
+  margin-top:8px;
+  min-width:180px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.6);
+  z-index:30;
+}
+.nav .dropdown-content a{
+  display:block;
+  color:var(--muted);
+  padding:8px 10px;
+  text-decoration:none;
+  border-radius:6px;
+}
+.nav .dropdown-content a:hover{ color:#fff; background:var(--glass) }
+
+/* show dropdown on hover/focus */
+.nav .dropdown:focus-within .dropdown-content,
+.nav .dropdown:hover .dropdown-content{
+  display:block;
+}
+
+/* ensure active styles apply to dropbtn and dropdown links */
+.nav a.active,
+.nav .dropbtn.active{
+  color:#fff;
+  background:rgba(255,255,255,0.04);
+}
+
 h1{ margin:8px 0 12px; color:var(--accent) }
 .card{
   background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -57,6 +96,18 @@ h1{ margin:8px 0 12px; color:var(--accent) }
 .row{ display:flex; gap:16px; flex-wrap:wrap }
 .col{ flex:1 1 240px; min-width:220px }
 .footer{ margin-top:28px; color:var(--muted); font-size:0.9rem; text-align:center }
+
+/* simple responsive tweak */
+@media (max-width:640px){
+  .nav{ justify-content:center; flex-wrap:wrap }
+  .container{ padding:16px }
+}
+/* ensure active styles apply to dropbtn and dropdown links */
+.nav a.active,
+.nav .dropbtn.active{
+  color:#fff;
+  background:rgba(255,255,255,0.04);
+}
 
 /* simple responsive tweak */
 @media (max-width:640px){
