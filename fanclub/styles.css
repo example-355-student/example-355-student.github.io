@@ -39,29 +39,26 @@ header{
 .nav .dropdown{
   position:relative;
 }
-.nav .dropbtn{
-  color:var(--muted);
-  text-decoration:none;
-  padding:8px 12px;
-  border-radius:6px;
-  display:inline-block;
-  background:transparent;
-  border:0;
-  cursor:pointer;
-}
-.nav .dropbtn:hover{ color:#fff; background:var(--glass) }
+
+/* Dropdown content — avoid a hover gap and allow smooth interaction */
 .nav .dropdown-content{
   display:none;
   position:absolute;
-  top:100%;
+  top:100%; /* sit directly under the button (no margin gap) */
   left:0;
   background:var(--card);
   border-radius:8px;
   padding:8px;
-  margin-top:8px;
   min-width:180px;
   box-shadow:0 6px 18px rgba(0,0,0,0.6);
   z-index:30;
+
+  /* use visibility/opacity so the menu doesn't disappear instantly */
+  visibility:hidden;
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity 160ms ease, transform 160ms ease, visibility 160ms;
+  pointer-events:none; /* disable clicks when hidden */
 }
 .nav .dropdown-content a{
   display:block;
@@ -72,10 +69,13 @@ header{
 }
 .nav .dropdown-content a:hover{ color:#fff; background:var(--glass) }
 
-/* show dropdown on hover/focus */
+/* Show dropdown on hover/focus — enable pointer-events so items are clickable */
 .nav .dropdown:focus-within .dropdown-content,
 .nav .dropdown:hover .dropdown-content{
-  display:block;
+  visibility:visible;
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
 }
 
 /* ensure active styles apply to dropbtn and dropdown links */
