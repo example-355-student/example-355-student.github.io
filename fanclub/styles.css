@@ -229,17 +229,32 @@ h1{ margin:8px 0 12px; color:var(--accent) }
 
 /* Desktop: ensure nav-items render as a horizontal row and hide hamburger */
 @media (min-width:721px){
-  /* don't let the nav-items take the full width (mobile rule set width:100%) */
+  /* make the nav a strict single row and ensure brand + items sit on it */
+  .nav{
+    flex-wrap:nowrap; /* don't allow wrapping */
+    align-items:center;
+  }
+
+  /* allow brand to size naturally and nav-items to take remaining space */
+  .nav .brand{
+    flex:0 0 auto;
+    margin-right:12px;
+  }
+
+  /* nav-items should be a flex container (inline with the brand) */
   .nav .nav-items {
-    display: block;
-    width: auto; /* key fix: allow it to sit inline with .brand */
+    display: flex;
+    flex: 1 1 auto; /* take remaining horizontal space */
+    width: auto; /* ensure it doesn't force a new row */
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .nav .nav-items .nav-row{
     display:flex;
     gap:12px;
     align-items:center;
-    flex-direction:row !important; /* ensure row on desktop */
+    flex-direction:row !important;
     flex-wrap:nowrap;
   }
 
