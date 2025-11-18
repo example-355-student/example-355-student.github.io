@@ -226,3 +226,19 @@ h1{ margin:8px 0 12px; color:var(--accent) }
   .nav{ justify-content:center; flex-wrap:wrap }
   .container{ padding:16px }
 }
+
+/* Desktop: ensure nav-items render as a horizontal row and hide hamburger */
+.nav .nav-items {
+  display: block; /* show the container on desktop */
+}
+.nav .nav-items .nav-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* hide hamburger on wide screens (desktop) */
+.hamburger {
+  display: none;
+}
