@@ -108,9 +108,121 @@ h1{ margin:8px 0 12px; color:var(--accent) }
 .col{ flex:1 1 240px; min-width:220px }
 .footer{ margin-top:28px; color:var(--muted); font-size:0.9rem; text-align:center }
 
+/* Hamburger button (hidden on wide screens) */
+.hamburger{
+  display:none;
+  background:transparent;
+  border:0;
+  width:40px;
+  height:40px;
+  padding:6px;
+  border-radius:6px;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+}
+.hamburger .bar{
+  display:block;
+  width:20px;
+  height:2px;
+  background:var(--muted);
+  position:relative;
+  transition:transform 160ms ease, opacity 160ms ease;
+}
+.hamburger .bar::before,
+.hamburger .bar::after{
+  content:'';
+  position:absolute;
+  left:0;
+  width:20px;
+  height:2px;
+  background:var(--muted);
+  transition:transform 160ms ease, opacity 160ms ease;
+}
+.hamburger .bar::before{ top:-6px }
+.hamburger .bar::after{ top:6px }
+
+/* Mobile styles */
+@media (max-width:720px){
+  .nav{
+    /* keep brand and hamburger on the same row */
+    gap:8px;
+    padding:8px 12px;
+  }
+
+  /* show hamburger */
+  .hamburger{ display:flex }
+
+  /* hide inline links, use a collapsible container */
+  .nav .nav-items{
+    display:none;
+    width:100%;
+  }
+
+  /* when nav has mobile-open, show nav-items as vertical stack */
+  .nav.mobile-open .nav-items{
+    display:block;
+    margin-top:8px;
+    background:transparent;
+  }
+
+  .nav .nav-items .nav-row{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    padding:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+    border-radius:8px;
+  }
+
+  .nav .nav-items a,
+  .nav .nav-items .dropbtn{
+    display:block;
+    color:var(--muted);
+    padding:8px 10px;
+    border-radius:6px;
+  }
+
+  /* dropdown content inside mobile menu should be static flow */
+  .nav .dropdown-content{
+    position:static;
+    transform:none;
+    visibility:visible;
+    opacity:1;
+    pointer-events:auto;
+    display:none; /* only show when dropdown.open on mobile */
+    margin-top:6px;
+    background:transparent;
+    box-shadow:none;
+    padding-left:6px;
+  }
+  .nav .dropdown.open .dropdown-content{
+    display:block;
+  }
+
+  /* adjust dropdown links for mobile */
+  .nav .dropdown-content a{
+    padding:8px 6px;
+    border-radius:6px;
+  }
+
+  /* Slight visual tweak when mobile menu is open */
+  .nav.mobile-open .brand{ margin-right:8px }
+}
+
+/* Hamburger active animation */
+.nav.mobile-open .hamburger .bar{
+  background:transparent;
+}
+.nav.mobile-open .hamburger .bar::before{
+  transform:rotate(45deg) translate(4px, 4px);
+}
+.nav.mobile-open .hamburger .bar::after{
+  transform:rotate(-45deg) translate(4px, -4px);
+}
+
 /* simple responsive tweak */
 @media (max-width:640px){
   .nav{ justify-content:center; flex-wrap:wrap }
   .container{ padding:16px }
-}
 }
