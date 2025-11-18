@@ -228,17 +228,37 @@ h1{ margin:8px 0 12px; color:var(--accent) }
 }
 
 /* Desktop: ensure nav-items render as a horizontal row and hide hamburger */
-.nav .nav-items {
-  display: block; /* show the container on desktop */
-}
-.nav .nav-items .nav-row {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: nowrap;
-}
+@media (min-width:721px){
+  /* don't let the nav-items take the full width (mobile rule set width:100%) */
+  .nav .nav-items {
+    display: block;
+    width: auto; /* key fix: allow it to sit inline with .brand */
+  }
 
-/* hide hamburger on wide screens (desktop) */
-.hamburger {
-  display: none;
+  .nav .nav-items .nav-row{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    flex-direction:row !important; /* ensure row on desktop */
+    flex-wrap:nowrap;
+  }
+
+  /* Make dropdown behave like an inline item so it doesn't take a full row */
+  .nav .nav-row > .dropdown{
+    display:inline-flex;
+    align-items:center;
+    position:relative; /* keep dropdown-positioning intact */
+    margin:0;
+  }
+
+  /* Ensure the drop button behaves like the other links */
+  .nav .nav-row > .dropdown .dropbtn,
+  .nav .nav-row > a{
+    display:inline-flex;
+    align-items:center;
+    padding:8px 12px;
+  }
+
+  /* Hide hamburger on wide screens (desktop) */
+  .hamburger{ display:none; }
 }
