@@ -1,5 +1,4 @@
 {
-  "name": "install and start basic http service"
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "postCreateCommand": "npm install -g http-server",
   "postStartCommand": "http-server",
