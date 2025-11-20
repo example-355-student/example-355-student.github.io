@@ -1,4 +1,9 @@
 {
+  "name": "install and start basic http service"
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": { "ghcr.io/devcontainers-extra/features/http-server:1": {} }
+  "postCreateCommand": "npm install -g http-server",
+  "postStartCommand": "http-server",
+  "features": { 
+    "ghcr.io/devcontainers-extra/features/http-server:1": {} 
+  }
 }
