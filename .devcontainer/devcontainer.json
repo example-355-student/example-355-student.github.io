@@ -1,7 +1,6 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "postCreateCommand": "npm install -g http-server",
-  "postAttachCommand": "http-server",
+  "postAttachCommand": "npx http-server -p 8000",
   "features": { 
     "ghcr.io/devcontainers-extra/features/http-server:1": {} 
   }
